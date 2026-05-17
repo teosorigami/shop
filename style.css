@@ -1,0 +1,216 @@
+/* --- Loading Local TTF Font --- */
+@font-face {
+    font-family: 'TeosCustomFont'; 
+    src: url('Origami.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* --- General Reset & Fonts --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- Header Styles --- */
+header {
+background-color: 
+#f8f5e5; /* <-- Change this hex code to whatever color you like! */
+    padding: 20px 40px;
+    padding: 20px 40px; 
+    border-bottom: 1px solid #eaeaea;
+}
+
+.header-container {
+    display: flex;            
+    flex-direction: row;      
+    align-items: center;      
+    justify-content: space-between; 
+    max-width: 600px;         /* Keeps the logos and text beautifully tight */
+    margin: 0 auto;      
+}
+
+.header-logo {
+    width: 40%;          /* Clean, compact logo size */
+        
+    object-fit: contain;  
+    flex-shrink: 0;       
+}
+
+.header-title {
+    font-family: 'TeosCustomFont', Georgia, serif;
+    font-size: 3rem;          /* INCREASED: Bold, clean title size */
+    letter-spacing: 6px;      
+    color: #2c3e50;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* --- Section Layout (The Magic Side-by-Side Grid) --- */
+section {
+    padding: 80px 20px;
+}
+
+.section-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;         
+    align-items: center;   
+    justify-content: space-between; 
+}
+
+/* --- The Zig-Zag Flip Trick --- */
+.section-two .section-container {
+    flex-direction: row-reverse; 
+}
+
+/* --- Text Styles --- */
+.text-content {
+    width: 45%;           /* Takes up 45% of the row width */
+    text-align: left;     
+}
+.text-content h2 {
+    font-family: 'TeosCustomFont', Georgia, serif;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 3rem;      /* INCREASED: Stunning large headings */
+    color: #f8f5e5;
+    line-height: 1.2;
+}
+.text-content p {
+    font-size: 1.3rem;    /* INCREASED: Highly readable body text */
+    color: #f8f5e5;
+    font-weight: 300;
+    line-height: 1.7;
+}
+
+/* --- Square Responsive Image Styles --- */
+.image-container {
+    width: 45%;           /* Takes up 45% of the row width, matching the text */
+    display: flex;
+    justify-content: center; 
+}
+
+.image-container img {
+    width: 100%;          /* Fills up its 45% container fully */
+    aspect-ratio: 1 / 1;  /* RESPONSIVE TRICK: Automatically locks it into a perfect square */
+    object-fit: cover;    
+    border-radius: 8px;   
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06); 
+}
+
+/* --- Section Backgrounds --- */
+.section-one { background-color: #721816; }   
+.section-two { background-color: 
+#604a00; }   
+.section-three { background-color: #f4f7f9; } 
+
+/* --- Footer Styles --- */
+footer {
+    background-color: #222222;
+    color: #f8f5e5;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.9rem;
+}
+footer p {
+    margin: 5px 0;
+}
+footer a {
+    color: #f8f5e5;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+/* --- Standalone Ticker Section --- */
+.ticker-section {
+    padding: 0; /* Strips out the large 80px section padding so it stays sleek */
+    background-color:#f8f5e5; /* CHANGE THIS: Your custom background color for the ticker row */
+}
+
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden; 
+    padding: 15px 0; /* Controls how tall the ticker bar is */
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.ticker {
+    display: flex;
+    width: fit-content;
+    animation: tickerLoop 25s linear infinite; 
+}
+
+.ticker__item {
+    font-family: 'TeosCustomFont', sans-serif; 
+    font-size: 1.1rem;
+    color: #2c3e50; /* CHANGE THIS: Text color (currently a dark slate to match a light background) */
+    white-space: nowrap; 
+    padding-right: 50px; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- The Animation Magic --- */
+@keyframes tickerLoop {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+/* ==========================================================================
+   MOBILE RESPONSIVE STYLES (For screens 768px wide or smaller)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Give sections a bit less padding so content fills the screen nicely */
+    section {
+        padding: 40px 15px;
+    }
+
+    /* 2. FORCE STACKING: Breaks the side-by-side flex layout into a vertical line */
+    .section-container,
+    .section-two .section-container {
+        flex-direction: column !important; 
+        gap: 20px;
+    }
+
+    /* 3. Make text content fill the full width of the mobile screen */
+    .text-content {
+        width: 100%;
+        text-align: center; /* Centers item names and prices nicely on mobile */
+    }
+
+    .text-content h2 {
+        font-size: 2.2rem; /* Scales headings down slightly so they don't wrap awkwardly */
+        margin-bottom: 10px;
+    }
+
+    /* 4. Make image container fill the full width */
+    .image-container {
+        width: 100%;
+    }
+
+    /* 5. Scale the images beautifully so they stay perfect squares on any phone */
+    .image-container img {
+        width: 90%; /* Leaves a tiny breathing space on the left and right */
+        max-width: 320px; /* Prevents the image from becoming overwhelmingly huge */
+        margin: 0 auto;
+    }
+
+    /* 6. Tighten up the Header Title and logos so they don't smash together */
+    .header-title {
+        font-size: 1.7rem;
+        letter-spacing: 3px;
+    }
+    
+    .header-logo {
+        width: 30%;
+    }
+}
